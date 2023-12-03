@@ -3,7 +3,6 @@ $email = $_GET["email"];
 $pwd = $_GET["password"];
 
 $conn = new mysqli("localhost", "root", "", "hotel_database");
-
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -15,7 +14,9 @@ $sql = "SELECT user_id, first_name, last_name, email, pass
 if ($stmt = $conn->prepare($sql)) {
     $stmt->bind_param("s", $email);
     $stmt->execute();
+
     $stmt->bind_result($user_id, $first_name, $last_name, $db_email, $db_pass);
+
     if ($stmt->fetch()) {
         // Verify the hashed password
         if (password_verify($pwd, $db_pass)) {
@@ -65,6 +66,7 @@ if ($stmt = $conn->prepare($sql)) {
                 alert('Invalid credentials');
                 window.location.href = 'login.html';
             </script>";
+
         // Close the result set of the first query
         $stmt->close();
     }

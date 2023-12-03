@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee User Account Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+  
+      /* Styles for the form container */
+      #EAM {
+        width: 90%;
+        max-width: 600px;
+        margin: 20px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      }
+  
+      /* Styles for form elements */
+      #EAM h1 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+  
+      #EAM form label {
+        display: block;
+        margin-bottom: 8px;
+      }
+  
+      #EAM form input[type="text"],
+      #EAM form input[type="date"],
+      #EAM form select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+  
+      #EAM form select {
+        appearance: none;
+      }
+  
+      /* Style for the submit button */
+      #EAM input[type="submit"] {
+        height: 45px;
+        width: 100%;
+        padding: 10px;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 400;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        background-image: linear-gradient(45deg, #ff00ff, #1400c4, #00a2ff);
+        background-size: 200% 200%;
+        transition: background-position 0.5s;
+      }
+  
+      #EAM input[type="submit"]:hover {
+        background-position: right center;
+      }
+    </style>
+  </head>
+  <body>
+     <!-- App bar -->
+    <div class="topnav">
+      <span class="menu" onclick="openNav()">&#9776;</span>
+      <label class="hotel-name"><a href="home.html">The Hotel</a></label>
+      <div class="get-room">
+        <a href="roomList.php">GET A ROOM</a>
+      </div>
+      <!-- Profile Icon and Link to Login Page -->
+      <div class="profile-pic">
+        <a id="profileLink" href=""><img src="profile-pic.png" id="profile-pic" alt="Profile" /></a>
+      </div>
+    </div>
+    <!-- Side bar -->
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="home.html">Home</a>
+      <a href="roomList.php">Get a room</a>
+      <a id="loginLink" href="login.html">Login</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+      <a href="employeeManagement.html">For Employees</a>
+      <a id="logoutLink" href="javascript:void(0)" style="display: none;" onclick="logout()">Logout</a>
+    </div>
+
+    <div id = "EAM">
+      <h1>Employee Account Management</h1><br/>
+
+      <form action = "employeeManagement.php" method = "get">
+        <label for="role">Select a role: </label>
+        <select name="role" id="role">
+          <option value="front_desk">Front Desk</option>
+          <option value="manager">Manager</option>
+          <option value="administrator">Administrator</option>
+        </select><br /><br />
+
+        <label for="action">Select an action: </label>
+        <select name="action" id="action">
+          <option value="create">create</option>
+          <option value="modify">modify</option>
+          <option value="deactivate">deactivate</option></select
+        ><br /><br />
+
+        <label for="user_id">Select Account ID:</label><br />
+        <input type="text" id="user_id" name="user_id" /><br /><br />
+
+        <div class="input-group">
+          <label for="fname">First Name:</label>
+          <input type="text" id="fname" name="fname" />
+  
+          <label for="lname">Last Name:</label>
+          <input type="text" id="lname" name="lname" />
+        </div>
+        <label for="phone">Phone:</label><br />
+        <input type="text" id="phone" name="phone" /><br /><br />
+        <label for="email">Email:</label><br />
+        <input type="text" id="email" name="email" /><br /><br />
+        <label for="address">Address:</label><br />
+        <input type="text" id="address" name="address" /><br /><br />
+
+        <p><u>Front Desk/Administrator only</u></p><br/>
+        <label for="loyalty_points">Loyalty Points:</label><br />
+        <input
+          type="text"
+          id="loyalty_points"
+          name="loyalty_points"
+        /><br /><br />
+
+        <p><u>Manager/Administrator only</u></p><br/>
+        <label for="manager_id">Manager ID:</label><br />
+        <input type="text" id="manager_id" name="manager_id" /><br /><br />
+        <label for="date_of_birth">Date of Birth:</label><br />
+        <input type="date" id="date_of_birth" name="date_of_birth" /><br /><br />
+        <label for="salary">Salary:</label><br />
+        <input type="text" id="salary" name="salary" /><br /><br />
+
+        <input type="submit" />
+      </form>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
